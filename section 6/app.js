@@ -1,6 +1,6 @@
 const startGameBtn = document.getElementById('start-game-btn');
 
-function startGame() {
+const start = function() {
   console.log('Game is starting...');
 }
 
@@ -12,6 +12,6 @@ function startGame() {
 
 // person.greet();
 
-console.log(typeof startGame);
+// console.log(typeof startGame);
 
-startGameBtn.addEventListener('click', startGame);
+startGameBtn.addEventListener('click', start);
