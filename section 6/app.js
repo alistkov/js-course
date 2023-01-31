@@ -77,7 +77,8 @@ startGameBtn.addEventListener('click', () => {
 });
 
 // not related to game
-const sumUp = (...numbers) => {
+const sumUp = (a, b, ...numbers) => {
+  const validateNumbers = (number) => (isNaN(number) ? 0 : number);
   const sum = numbers.reduce((acc, number) => acc + number, 0);
   return sum;
 };
