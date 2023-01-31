@@ -75,3 +75,19 @@ startGameBtn.addEventListener('click', () => {
   alert(message);
   gameIsRunning = false;
 });
+
+// not related to game
+const sumUp = (...numbers) => {
+  const sum = numbers.reduce((acc, number) => acc + number, 0);
+  return sum;
+};
+
+const subtractUp = (...numbers) => {
+  const sub = numbers.reduce((acc, number) => acc - number, 0);
+  return sub;
+};
+
+console.log(sumUp(1, 5, 10, -3, 6, 10));
+console.log(subtractUp(1, 5, 10, -3, 6, 10));
+console.log(sumUp(1, 5, 10, -3, 6, 10, 25, 88));
+console.log(subtractUp(1, 5, 10, -3, 6, 10, 25, 88));
