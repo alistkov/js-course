@@ -77,22 +77,35 @@ startGameBtn.addEventListener('click', () => {
 });
 
 // not related to game
-const sumUp = (resultHandler, ...numbers) => {
+const combine = (resultHandler, operation, ...numbers) => {
   const validateNumbers = (number) => (isNaN(number) ? 0 : number);
-  const sum = numbers.reduce((acc, number) => acc + number, 0);
-  resultHandler(sum);
+  const result = numbers.reduce((acc, number) => {
+    return operation === 'ADD' ? acc + number : acc - number;
+  }, 0);
+  resultHandler(result);
 };
 
-const subtractUp = (...numbers) => {
-  const sub = numbers.reduce((acc, number) => acc - number, 0);
-  return sub;
+// const subtractUp = (resultHandler, ...numbers) => {
+//   const sub = numbers.reduce((acc, number) => acc - number, 0);
+//   resultHandler(sub, 'subtract');
+// };
+
+const showResult = (operationName, result) => {
+  alert(`The reuslt after ${operationName} all numbers is: ${result}`);
 };
 
-const showResult = (result) => {
-  alert(`The reuslt after adding all numbers is: ${result}`);
-};
-
-sumUp(showResult, 1, 5, 10, -3, 6, 10);
-sumUp(showResult, 1, 5, 10, -3, 6, 10, 25, 88);
-console.log(subtractUp(1, 5, 10, -3, 6, 10));
-console.log(subtractUp(1, 5, 10, -3, 6, 10, 25, 88));
+combine(showResult.bind(this, 'adding'), 'ADD', 1, 5, 10, -3, 6, 10);
+combine(showResult.bind(this, 'adding'), 'ADD', 1, 5, 10, -3, 6, 10, 25, 88);
+combine(showResult.bind(this, 'subtracting'), 'SUBTRACT', 1, 5, 10, -3, 6, 10);
+combine(
+  showResult.bind(this, 'subtracting'),
+  'SUBTRACT',
+  1,
+  5,
+  10,
+  -3,
+  6,
+  10,
+  25,
+  88
+);
