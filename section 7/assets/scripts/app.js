@@ -5,6 +5,14 @@ const hideAddMovieModal = addMovieModal.querySelector('.btn--passive');
 const confirmAddMovieButton = addMovieModal.querySelector('.btn--success');
 const inputs = addMovieModal.querySelectorAll('input');
 
+const movies = [];
+
+const clearMovieInputs = () => {
+  for (const input of inputs) {
+    input.value = '';
+  }
+};
+
 const showModalAndBackdrop = () => {
   addMovieModal.classList.add('visible');
   backdrop.classList.add('visible');
@@ -13,6 +21,7 @@ const showModalAndBackdrop = () => {
 const hideModalAndBackdrop = () => {
   addMovieModal.classList.remove('visible');
   backdrop.classList.remove('visible');
+  clearMovieInputs();
 };
 
 const addMovieHandler = () => {
@@ -22,7 +31,17 @@ const addMovieHandler = () => {
 
   if (titleValue.trim() === '' || imageUrlValue.trim() === '' || ratingValue.trim() === '' || +ratingValue < 1 || +ratingValue > 5) {
     alert('Please enter valid values (rating between 1 and 5).');
+    return;
   }
+
+  const newMovie = {
+    title: titleValue,
+    image: imageUrlValue,
+    ratingValue: ratingValue,
+  };
+  movies.push(newMovie);
+  hideModalAndBackdrop();
+  clearMovieInputs();
 };
 
 
