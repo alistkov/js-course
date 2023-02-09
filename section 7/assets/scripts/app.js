@@ -22,6 +22,7 @@ const deleteMovie = (id) => {
   movies.splice(movieIndex, 1);
   const listRoot = document.getElementById('movie-list');
   listRoot.children[movieIndex].remove();
+  updateUI();
   // listRoot.removeChild(listRoot.children[movieIndex]);
 };
 
@@ -44,10 +45,19 @@ const renderNewMovieElement = (id, title, imageUrl, rating) => {
 };
 
 const deleteMovieHandler = (id) => {
-
   deleteMovieModal.classList.add('visible');
   backdrop.classList.add('visible');
-  // deleteMovieHandler(id);
+
+  deleteMovieModal.querySelector('.btn--passive').addEventListener('click', () => {
+    deleteMovieModal.classList.remove('visible');
+    backdrop.classList.remove('visible');
+  });
+
+  deleteMovieModal.querySelector('.btn--danger').addEventListener('click', () => {
+    deleteMovieModal.classList.remove('visible');
+    backdrop.classList.remove('visible');
+    deleteMovie(id);
+  });
 };
 
 const clearMovieInputs = () => {
